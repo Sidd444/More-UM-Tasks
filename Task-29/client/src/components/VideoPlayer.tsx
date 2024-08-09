@@ -4,7 +4,8 @@ const VideoPlayer: React.FC = () => {
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
 
   const handlePlayVideo = () => {
-    setVideoUrl('http://localhost:3001/video');
+    //setVideoUrl('http://localhost:3001/video');
+    setVideoUrl('https://task-29-server.vercel.app/video');
   };
 
   return (
