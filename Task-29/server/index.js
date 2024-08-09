@@ -7,7 +7,7 @@ const port = 3001;
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/video', (req, res) => {
-  const videoPath = path.join(__dirname, 'videos', 'rickRoll.mp4');
+  const videoPath = path.join(__dirname, 'public','videos', 'rickRoll.mp4');
   const stat = fs.statSync(videoPath);
   const fileSize = stat.size;
   const range = req.headers.range;
