@@ -1,0 +1,45 @@
+[
+  {
+    "username": "l@gmail.com",
+    "password": "l"
+  },
+  {
+    "username": "hh@gmail.com",
+    "password": "h"
+  },
+  {
+    "name": "Rimax Lez",
+    "email": "l@gmail.com",
+    "age": "44",
+    "role": "admin",
+    "password": "l"
+  },
+  {
+    "name": "Elon Musk",
+    "email": "elon@gmail.com",
+    "age": "6",
+    "role": "admin",
+    "password": "l"
+  },
+  {
+    "name": "rex",
+    "email": "r",
+    "age": "22",
+    "role": "admin",
+    "password": "r"
+  },
+  {
+    "name": "Elon Musk",
+    "email": "e@gmail.com",
+    "age": "22",
+    "role": "user",
+    "password": "e"
+  },
+  {
+    "name": "Name",
+    "email": "name@gmail.com",
+    "age": "44",
+    "role": "admin",
+    "password": "name"
+  }
+]
