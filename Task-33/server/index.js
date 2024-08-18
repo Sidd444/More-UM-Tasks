@@ -5,18 +5,12 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-
-const allowedOrigins = ['https://66c227821f6ae6b9b698e3cf--sensational-tulumba-a330b7.netlify.app/'];
+// Replace with your Netlify frontend URL
+const allowedOrigins = ['https://66c227821f6ae6b9b698e3cf--sensational-tulumba-a330b7.netlify.app'];
 
 app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    credentials: true
+    origin: allowedOrigins, // Set your frontend URL here
+    credentials: true, // Allow credentials (cookies) to be sent
 }));
 
 app.use(cookieParser());
