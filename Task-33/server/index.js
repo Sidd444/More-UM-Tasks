@@ -5,9 +5,9 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Replace with your Netlify frontend URL
-const allowedOrigin = 'https://66c2ce19f0169f47652661c2--sensational-tulumba-a330b7.netlify.app';
 
+const allowedOrigin = 'https://66c2ce19f0169f47652661c2--sensational-tulumba-a330b7.netlify.app';
+//const allowedOrigin='http://localhost:5173'
 app.use(cors({
     origin: allowedOrigin,
     methods: ['GET', 'POST', 'OPTIONS'],
@@ -29,15 +29,25 @@ app.use(express.json());
 // Set up routes
 app.post('/set-cookie', (req, res) => {
     const { name, value } = req.body;
+    
     if (name && value) {
-        res.cookie(name, value, { maxAge: 900000, httpOnly: true });
+        res.cookie(name, value, {
+            maxAge: 900000,           // Cookie expires in 15 minutes
+            httpOnly: true,           // Cookie is only accessible by the web server
+            secure: true,             // Ensures cookie is sent over HTTPS
+            sameSite: 'None',         // Allows cross-site cookie sharing
+            domain: 'your-frontend-domain.com' // Replace with your actual frontend domain
+        });
+        
         res.status(200).json({ message: `Cookie ${name} set successfully` });
     } else {
         res.status(400).json({ message: 'Name and value are required to set a cookie' });
     }
 });
 
+
 app.get('/get-cookies', (req, res) => {
+    console.log('GET /get-cookies called');
     const cookies = req.cookies;
     if (Object.keys(cookies).length > 0) {
         res.status(200).json(cookies);
