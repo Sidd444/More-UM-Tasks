@@ -36,7 +36,7 @@ app.post('/set-cookie', (req, res) => {
             httpOnly: true,           // Cookie is only accessible by the web server
             secure: true,             // Ensures cookie is sent over HTTPS
             sameSite: 'None',         // Allows cross-site cookie sharing
-            domain: 'your-frontend-domain.com' // Replace with your actual frontend domain
+            domain: 'https://66c2ce19f0169f47652661c2--sensational-tulumba-a330b7.netlify.app' // Replace with your actual frontend domain
         });
         
         res.status(200).json({ message: `Cookie ${name} set successfully` });
