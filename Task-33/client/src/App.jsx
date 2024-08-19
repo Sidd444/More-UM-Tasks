@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { ROUTE_URL } from './config';
 
+axios.defaults.withCredentials = true;
+
 function App() {
     const [cookieName, setCookieName] = useState('');
     const [cookieValue, setCookieValue] = useState('');

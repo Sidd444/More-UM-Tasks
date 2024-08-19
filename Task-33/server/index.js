@@ -6,16 +6,27 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Replace with your Netlify frontend URL
-const allowedOrigins = ['https://66c227821f6ae6b9b698e3cf--sensational-tulumba-a330b7.netlify.app'];
+const allowedOrigin = 'https://66c227821f6ae6b9b698e3cf--sensational-tulumba-a330b7.netlify.app';
 
 app.use(cors({
-    origin: allowedOrigins, // Set your frontend URL here
-    credentials: true, // Allow credentials (cookies) to be sent
+    origin: allowedOrigin,
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true // Allow cookies to be sent with requests
 }));
+
+app.options('*', (req, res) => {
+    res.header('Access-Control-Allow-Origin', allowedOrigin);
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.sendStatus(204);
+});
 
 app.use(cookieParser());
 app.use(express.json());
 
+// Set up routes
 app.post('/set-cookie', (req, res) => {
     const { name, value } = req.body;
     if (name && value) {
