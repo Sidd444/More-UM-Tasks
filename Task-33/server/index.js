@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Replace with your Netlify frontend URL
-const allowedOrigin = 'https://66c227821f6ae6b9b698e3cf--sensational-tulumba-a330b7.netlify.app';
+const allowedOrigin = 'https://66c2ce19f0169f47652661c2--sensational-tulumba-a330b7.netlify.app';
 
 app.use(cors({
     origin: allowedOrigin,
