@@ -6,28 +6,22 @@ const app = express();
 const PORT = 3000;
 
 
-const allowedOrigin = 'https://66c2ce19f0169f47652661c2--sensational-tulumba-a330b7.netlify.app';
-//const allowedOrigin='http://localhost:5173'
-app.use(cors({
-    origin: allowedOrigin,
-    methods: ['GET', 'POST', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true // Allow cookies to be sent with requests
-}));
+app.use(cors());
 
-app.options('*', (req, res) => {
-    res.header('Access-Control-Allow-Origin', allowedOrigin);
-    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.header('Access-Control-Allow-Credentials', 'true');
-    res.sendStatus(204);
-});
+// app.options('*', (req, res) => {
+//     res.header('Access-Control-Allow-Origin', allowedOrigin);
+//     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+//     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+//     res.header('Access-Control-Allow-Credentials', 'true');
+//     res.sendStatus(204);
+// });
 
 app.use(cookieParser());
 app.use(express.json());
 
-// Set up routes
+
 app.post('/set-cookie', (req, res) => {
+    console.log("/set-cookie called")
     const { name, value } = req.body;
     
     if (name && value) {
@@ -36,7 +30,7 @@ app.post('/set-cookie', (req, res) => {
             httpOnly: true,           // Cookie is only accessible by the web server
             secure: true,             // Ensures cookie is sent over HTTPS
             sameSite: 'None',         // Allows cross-site cookie sharing
-            domain: allowedOrigin // Replace with your actual frontend domain
+            domain: allowedOrigin     
         });
         
         res.status(200).json({ message: `Cookie ${name} set successfully` });
