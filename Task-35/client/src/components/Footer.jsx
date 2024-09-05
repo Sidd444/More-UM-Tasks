@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="bg-gray-800 text-white py-8 text-xl">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
         <div className="text-sm">
-          © {new Date().getFullYear()} Blogger. All rights reserved.
+          © {new Date().getFullYear()} All rights reserved.
         </div>
         <div className="flex flex-col md:flex-row md:space-x-6 space-y-4 md:space-y-0 text-center">
           <a href="#" className="text-gray-400 hover:text-white transition duration-300">Privacy Policy</a>
