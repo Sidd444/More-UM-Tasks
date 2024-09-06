@@ -33,4 +33,25 @@ const getAggregatedData = async (req, res) => {
   }
 };
 
-module.exports = { addData, getAggregatedData };
+// GET /data
+const getAllData = async (req, res) => {
+  try {
+    const data = await Data.find();
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to fetch data' });
+  }
+};
+
+// DELETE /data/:id
+const deleteData = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Data.findByIdAndDelete(id);
+    res.status(200).json({ message: 'Data deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to delete data' });
+  }
+};
+
+module.exports = { addData, getAggregatedData, getAllData, deleteData };
