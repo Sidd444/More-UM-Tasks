@@ -5,7 +5,7 @@ const cors = require('cors');
 const app = express();
 const PORT = 3000;
 
-const websites = ['https://sensational-tulumba-a330b7.netlify.app/','http://localhost:5173']; // Allowed frontend origin
+const websites = ['https://sensational-tulumba-a330b7.netlify.app','http://localhost:5173']; // Allowed frontend origin
 
 app.use(
     cors({
