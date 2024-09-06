@@ -5,16 +5,21 @@ const cors = require('cors');
 const app = express();
 const PORT = 3000;
 
-const websites = ['https://sensational-tulumba-a330b7.netlify.app','http://localhost:5173']; // Allowed frontend origin
+const websites = ['https://sensational-tulumba-a330b7.netlify.app','http://localhost:5173']; 
 
-app.use(
-    cors({
-        origin: 'https://sensational-tulumba-a330b7.netlify.app',
-        methods: "GET,POST,PUT,DELETE,OPTIONS",
-        credentials: true,
-        allowedHeaders: "Content-Type,Authorization",
-    })
-);
+// app.use(
+//     cors({
+//         origin: 'https://sensational-tulumba-a330b7.netlify.app',
+//         methods: "GET,POST,PUT,DELETE,OPTIONS",
+//         credentials: true,
+//         allowedHeaders: "Content-Type,Authorization",
+//     })
+// );
+
+app.use(cors({
+    origin: true, 
+    credentials: true 
+  }));
 
 app.options('*', (req, res) => {
     res.header('Access-Control-Allow-Origin', websites[0]);
@@ -33,7 +38,7 @@ app.post('/set-cookie', (req, res) => {
         res.cookie(name, value, {
             maxAge: 900000,
             httpOnly: true,
-            secure: false, // Set this to true if using HTTPS
+            secure: true, 
             sameSite: 'None',
         });
         res.status(200).json({ message: `Cookie ${name} set successfully` });

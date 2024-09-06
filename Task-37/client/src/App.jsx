@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import SERVER_URL from './server_url';
 
 function App() {
   const [formData, setFormData] = useState({ name: '', value: '', category: '' });
@@ -8,7 +9,7 @@ function App() {
 
   const fetchAggregatedData = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/aggregate');
+      const res = await axios.get(`${SERVER_URL}/api/aggregate`);
       setAggregatedData(res.data);
     } catch (err) {
       console.error('Error fetching aggregated data', err);
@@ -17,7 +18,7 @@ function App() {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/data');
+      const res = await axios.get(`${SERVER_URL}/api/data`);
       setData(res.data);
     } catch (err) {
       console.error('Error fetching data', err);
@@ -27,7 +28,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/data', formData);
+      await axios.post(`${SERVER_URL}/api/data`, formData);
       setFormData({ name: '', value: '', category: '' });
       fetchData();
       fetchAggregatedData();
@@ -38,7 +39,7 @@ function App() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/data/${id}`);
+      await axios.delete(`${SERVER_URL}/api/data/${id}`);
       fetchData();
     } catch (err) {
       console.error('Error deleting data', err);
