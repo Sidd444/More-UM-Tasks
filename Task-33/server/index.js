@@ -9,7 +9,7 @@ const websites = ['https://sensational-tulumba-a330b7.netlify.app','http://local
 
 app.use(
     cors({
-        origin: websites,
+        origin: 'https://sensational-tulumba-a330b7.netlify.app',
         methods: "GET,POST,PUT,DELETE,OPTIONS",
         credentials: true,
         allowedHeaders: "Content-Type,Authorization",
