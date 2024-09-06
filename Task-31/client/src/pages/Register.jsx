@@ -14,7 +14,7 @@ function Register() {
       await axios.post(`${API_URL}/auth/register`, { username, password });
       alert('Registration successful');
     } catch (error) {
-      setError('Registration unsuccessful. User may already exist.');
+      setError(error+' Registration unsuccessful. User may already exist.');
     }
   };
 
